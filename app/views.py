@@ -25,7 +25,7 @@ class JSONResponse(HttpResponse):
 
 def home(request):
 
-    page = requests.get('http://bdnews24.com/politics/')
+    page = requests.get('http://bdnews24.com/')
     data = page.text
     soup = BeautifulSoup(data)
     links =[]
