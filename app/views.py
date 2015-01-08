@@ -7,7 +7,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 import json
 
-from lxml import html
+from lxml import html,etree
 import requests
 
 
@@ -26,9 +26,9 @@ def home(request):
     # news = News.objects.all()
     # serializer = NewsSerializer(news, many=True)
     # return JSONResponse(serializer.data)
-    page = requests.get('http://www.bdnews24.com/')
+    page = requests.get('http://bdnews24.com/politics/')
     tree = html.fromstring(page.text)
-    buyers = tree.xpath('//h3/text()')
+    buyers = tree.xpath('//div[@class="media news"]/h6/a/text()')
     # prices = tree.xpath('//span[@class="item-price"]/text()')
 
     return HttpResponse(buyers)
