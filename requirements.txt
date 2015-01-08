@@ -1,2 +1,3 @@
 pyflakes
 djangorestframework
+lxml
